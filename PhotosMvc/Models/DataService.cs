@@ -11,7 +11,6 @@ namespace PhotosMvc.Models
             new IndexVM{ Id = 2, Path = "https://eu-central-1.linodeobjects.com/fpg-media/app/uploads/spraktidningen/2021/03/160417b.jpg"}
         };
 
-
         public IndexVM[] Pictures()
         {
             return Index.ToArray();

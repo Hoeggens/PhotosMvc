@@ -12,7 +12,7 @@ namespace PhotosMvc.Models
         {
             this._httpClientFactory = _httpClientFactory;
         }
-        public async Task<IndexVM[]> GetPhotos()
+        public async Task<IndexVM[]> GetPhotos(int id)
         {
             const string Url = "https://jsonplaceholder.typicode.com/photos";
 

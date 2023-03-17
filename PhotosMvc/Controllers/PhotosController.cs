@@ -4,9 +4,7 @@ using PhotosMvc.Views.Photos;
 
 namespace PhotosMvc.Controllers
 {
-    [Route("[controller]")]
-    [ApiController]
-    public class PhotosController : ControllerBase
+    public class PhotosController : Controller
     {
         DataService dataService;
         public PhotosController(DataService dataService)
@@ -14,22 +12,11 @@ namespace PhotosMvc.Controllers
             this.dataService = dataService;
         }
 
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ComputerDetailsDto>> GetProductAsync(int id)
+        [HttpGet("")]
+        public IActionResult Index()
         {
-            var model = await dataService.GetComputerDetailsAsync(id);
-            if (model == null)
-                return NotFound();
-
-            return Ok(model);
+            IndexVM[] model = dataService.Pictures();
+            return View(model);
         }
-
-        //[HttpGet("")]
-        //public IActionResult Index()
-        //{
-        //    IndexVM[] model = dataService.Pictures();
-        //    return View(model);
-        //}
     }
 }

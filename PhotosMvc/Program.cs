@@ -2,9 +2,11 @@ using PhotosMvc.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
-builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<DataService>(); 
-builder.Services.AddSingleton<PhotoDetailsDto>(); 
+builder.Services.AddControllersWithViews(); 
+builder.Services.AddEndpointsApiExplorer();
+
+//builder.Services.AddSingleton<DataService>();
+//builder.Services.AddSingleton<PhotoDetailsDto>();
 var app = builder.Build();
 
 app.UseRouting();
