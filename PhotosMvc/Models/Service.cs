@@ -18,7 +18,7 @@ namespace PhotosMvc.Models
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
 
-            PhotoDetailsDto[] photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(Url);
+            PhotoDetailsDto[] photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(Url + id);
 
             return photos
                 .Select(x => new IndexVM
