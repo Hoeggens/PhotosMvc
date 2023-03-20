@@ -12,19 +12,19 @@ namespace PhotosMvc.Models
         {
             this._httpClientFactory = _httpClientFactory;
         }
-        public async Task<IndexVM[]> GetPhotos(int id)
+        public async Task<PhotoDetailsDto[]> GetPhotos()
         {
             const string Url = "https://jsonplaceholder.typicode.com/photos";
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
 
-            PhotoDetailsDto[] photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(Url + id);
+            PhotoDetailsDto[]? photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(Url);
 
             return photos
-                .Select(x => new IndexVM
+                .Select(x => new PhotoDetailsDto
                 {
                     Title = x.Title,
-                    ImgUrl = x.Url,
+                    Url = x.Url,
                 })
                 .ToArray();
         }

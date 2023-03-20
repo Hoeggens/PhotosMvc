@@ -13,9 +13,9 @@ namespace PhotosMvc.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IndexVM[] model = dataService.Pictures();
+            IndexVM[] model = await dataService.GetPhotos();
             return View(model);
         }
     }

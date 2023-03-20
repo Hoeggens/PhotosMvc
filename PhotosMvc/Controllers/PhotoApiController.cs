@@ -15,14 +15,14 @@ namespace PhotosMvc.Controllers
             this.dataService = dataService;
         }
 
-        [HttpGet("/{id}")]
-        public async Task<ActionResult<IndexVM[]>> IndexAsync()
+        [HttpGet("")]
+        public async Task<ActionResult<PhotoDetailsDto[]>> IndexAsync()
         {
-            var model = await dataService.GetPhotos(2);
+            var model = await dataService.GetPhotos();
             if (model == null)
                 return NotFound();
 
-            return Ok(model);
+            return model;
         }
     }
 }

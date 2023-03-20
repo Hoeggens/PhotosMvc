@@ -5,8 +5,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews(); 
 builder.Services.AddEndpointsApiExplorer();
 
-//builder.Services.AddSingleton<DataService>();
-//builder.Services.AddSingleton<PhotoDetailsDto>();
+builder.Services.AddSingleton<DataService>();
+builder.Services.AddSingleton<Service>();
 var app = builder.Build();
 
 app.UseRouting();
