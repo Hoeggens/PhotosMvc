@@ -23,28 +23,21 @@ namespace PhotosMvc.Models
 
         public async Task<IndexVM[]> GetPhotos()
         {
-            var url = "https://localhost:7282/api/photoapi";
+            var url = "https://localhost:7104/";
 
-            // Kräver att en instans av IHttpClientFactory injicerats i servicens konstruktor
-            // och att följande anropas i program: builder.Services.AddHttpClient();
             HttpClient httpClient = HttpClientFactory.CreateClient();
 
-            // Anropar Web-API:t och deserialiserar innehållet till en array av foton
-            PhotoDetailsDto[] photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(url);
+            PhotoDetailsDto[]? photos = await httpClient.GetFromJsonAsync<PhotoDetailsDto[]>(url);
 
             return photos
-         .Select(o => new IndexVM
+         .Select(x => new IndexVM
          {
-             Title = o.Title,
-             Url = o.Url
+             Id = x.Id,
+             Path = x.Path,
+             Title = x.Title,
+             Url = x.Url,
          })
          .ToArray();
-
-
         }
-
-
-
-
     }
 }

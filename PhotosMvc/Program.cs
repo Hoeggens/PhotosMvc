@@ -6,7 +6,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSingleton<DataService>();
-builder.Services.AddSingleton<Service>();
 var app = builder.Build();
 
 app.UseRouting();
